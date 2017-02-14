@@ -1,0 +1,23 @@
+{
+  "name": "textGrabber",
+  "version": "1.0.0",
+  "description": "textGrabber on JavaScript",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrikVadim/textGrabber.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrikVadim/textGrabber/issues"
+  },
+  "homepage": "https://github.com/BrikVadim/textGrabber#readme",
+  "dependencies": {
+    "tesseract.js": "^1.0.10"
+  }
+}
