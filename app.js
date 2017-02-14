@@ -1,7 +1,32 @@
-const Tesseract = require('tesseract.js')
-const image = require('path').resolve(__dirname, process.argv[2])
+const { app, BrowserWindow } = require('electron')
 
-Tesseract.recognize(image)
-    .then    ( data   => console.log(data.text))
-    .catch   ( err    => console.error(err))
-    .finally ( ()     => process.exit())
+const path = require('path')
+const url = require('url')
+
+let mainWindow = null
+
+function createWindow() {
+    mainWindow = new BrowserWindow({ width: 800, height: 600 })
+
+    mainWindow.loadURL(url.format({
+        pathname: path.join(__dirname, 'index.html'),
+        protocol: 'file:',
+        slashes: true
+    }))
+
+    mainWindow.on('closed', () => mainWindow = null)
+}
+
+app.on('ready', createWindow)
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        app.quit()
+    }
+})
+
+app.on('activate', () => {
+    if (mainWindow === null) {
+        createWindow()
+    }
+})
