@@ -4,12 +4,14 @@ const fs = require('fs')
 
 let filesList = document.getElementById('filesList')
 let relustArea = document.getElementById('result')
+let progressBar = document.getElementById('progress')
 let image = null
 
 function recognizeImage(image) {
     Tesseract.recognize(image, {
             lang: 'rus'
-        })
+    })
+        .progress(message => progressBar.value = message.progress || 0)
         .then(data => relustArea.innerHTML = data.text)
         .catch(err => alert(err))
 }
@@ -30,7 +32,7 @@ function clearFileList() {
     filesList.innerHTML = ''
 }
 
-filesList.onchange = function () {
+filesList.onclick = function () {
     image = path.resolve(__dirname, filesList.value)
     recognizeImage(image)
 }

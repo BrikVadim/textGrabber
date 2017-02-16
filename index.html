@@ -3,14 +3,49 @@
     <head>
         <meta charset="utf-8" />
         <style>
+            * {
+                margin: 0;
+                padding: 0;
+                border: none;
+                outline: none;
+            }
+
+            html,
+            body {
+                height: 99%;
+            }
+
+            .container {
+                width: 100%;
+                height: 100%;
+                float: left;
+            }
+
             select {
-                width: 200px;
+                width: 25%;
+                min-height: 100%;
+                padding: 5px;
+            }
+
+            textarea {
+                width: 65%;
+                height: 100%;
+            }
+
+            progress {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
             }
         </style>
     </head>
     <body>
-        <select id="filesList" multiple></select>
-        <textarea id="result"></textarea>
+        <div class="container">
+            <select id="filesList" multiple></select>
+            <textarea id="result"></textarea>
+            <progress id="progress"></progress>
+        </div>
     </body>
     <script>require('./render.js')</script>
 </html>
